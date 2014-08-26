@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"log"
 	"time"
-	"github.com/go-fsnotify/fsnotify"
+	"gopkg.in/fsnotify.v1"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 	var wv *walk.WebView
 	if err := (MainWindow{
 		AssignTo: &mw,
-		Title:   "Walk WebView Example",
+		Title:   "mdp",
 		MinSize: Size{800, 600},
 		Layout:  VBox{},
 		Children: []Widget{
@@ -43,7 +43,7 @@ func main() {
 	
 	time.Sleep(10 * time.Millisecond)
 	go func() {
-		//time.Sleep(10 * time.Millisecond)
+		time.Sleep(10 * time.Millisecond)
 		for {
 			select {
 			case event := <-watcher.Events:
