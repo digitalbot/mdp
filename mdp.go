@@ -7,22 +7,22 @@ import (
 
 import (
 	"fmt"
+	"gopkg.in/fsnotify.v1"
 	"log"
 	"time"
-	"gopkg.in/fsnotify.v1"
 )
 
 func main() {
 	filename := "C:\\Users\\kosuke\\.gitconfig"
 	fmt.Println(filename)
-	
+
 	var mw *walk.MainWindow
 	var wv *walk.WebView
 	if err := (MainWindow{
 		AssignTo: &mw,
-		Title:   "mdp",
-		MinSize: Size{800, 600},
-		Layout:  VBox{},
+		Title:    "mdp",
+		MinSize:  Size{800, 600},
+		Layout:   VBox{},
 		Children: []Widget{
 			WebView{
 				AssignTo: &wv,
@@ -40,7 +40,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer watcher.Close()
-	
+
 	time.Sleep(10 * time.Millisecond)
 	go func() {
 		time.Sleep(10 * time.Millisecond)
